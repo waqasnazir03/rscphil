@@ -6,8 +6,10 @@ on:
     branches:
       - master
     paths:
-      - 'test/**/Dockerfile'
-      - 'test/**/image_files/**'
+      - 'test/api/Dockerfile'
+      - 'test/lib/Dockerfile'
+      - 'test/api/image_files/**'
+      - 'test/lib/image_files/**'
       
 jobs:
   Build-docker-image:
