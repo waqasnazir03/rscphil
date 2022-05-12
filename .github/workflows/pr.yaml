@@ -1,0 +1,56 @@
+name: Build image upon PR for main branch
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'test/api/**'
+      - 'test/lib/**'
+      - '.github/workflows/**'
+      
+jobs:
+  Build-docker-image:
+    runs-on: ubuntu-20.04
+    steps:
+      # Echo github event name
+      - name: github event
+        run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+    
+      # Check out code
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get actions specific changed files
+        id: changed-files-actions
+        uses: tj-actions/changed-files@v19
+        with:
+          files: |
+            '.github/workflows/**'
+
+      - name: Get api specific changed files
+        id: changed-files-api
+        uses: tj-actions/changed-files@v19
+        with:
+          files: |
+            'test/api/**'
+
+      - name: Get lib specific changed files
+        id: changed-files-lib
+        uses: tj-actions/changed-files@v19
+        with:
+          files: |
+            'test/lib/**'
+
+      - name: Run step if actions files modified
+        if: steps.changed-files-actions.outputs.any_modified == 'true'
+        run: |
+          for file in ${{ steps.changed-files-actions.outputs.any_modified }}; do
+            echo "$file was modified"
+          done
+
+      - name: Run step if lib files modified
+        if: steps.changed-files-lib.outputs.any_modified == 'true'
+        run: |
+          for file in ${{ steps.changed-files-lib.outputs.any_modified }}; do
+            echo "$file was modified"
+          done
