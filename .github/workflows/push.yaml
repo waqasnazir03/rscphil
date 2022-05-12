@@ -35,7 +35,7 @@ jobs:
             'test/api/**'
 
       - name: Get lib specific changed files
-        id: changed-files-api
+        id: changed-files-lib
         uses: tj-actions/changed-files@v19
         with:
           files: |
@@ -47,3 +47,4 @@ jobs:
           for file in ${{ steps.changed-files-actions.outputs.any_modified }}; do
             echo "$file was modified"
           done
+      
