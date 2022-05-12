@@ -48,3 +48,9 @@ jobs:
             echo "$file was modified"
           done
 
+      - name: Run step if lib files modified
+        if: steps.changed-files-lib.outputs.any_modified == 'true'
+        run: |
+          for file in ${{ steps.changed-files-lib.outputs.any_modified }}; do
+            echo "$file was modified"
+          done
