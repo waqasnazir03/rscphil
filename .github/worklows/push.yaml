@@ -1,6 +1,6 @@
 name: Build image upon PR for main branch
 on:
-  pull_request:
+  push:
     branches:
       - master
     paths:
@@ -47,4 +47,3 @@ jobs:
           for file in ${{ steps.changed-files-actions.outputs.any_modified }}; do
             echo "$file was modified"
           done
-
