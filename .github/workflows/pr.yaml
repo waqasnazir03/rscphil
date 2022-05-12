@@ -25,21 +25,21 @@ jobs:
         uses: tj-actions/changed-files@v19
         with:
           files: |
-            '.github/workflows/**'
+            .github/workflows/**
 
       - name: Get api specific changed files
         id: changed-files-api
         uses: tj-actions/changed-files@v19
         with:
           files: |
-            'test/api/**'
+            test/api/**
 
       - name: Get lib specific changed files
         id: changed-files-lib
         uses: tj-actions/changed-files@v19
         with:
           files: |
-            'test/lib/**'
+            test/lib/**
 
       - name: Run step if actions files modified
         if: steps.changed-files-actions.outputs.any_modified == 'true'
