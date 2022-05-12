@@ -35,7 +35,7 @@ jobs:
             'test/api/**'
 
       - name: Get lib specific changed files
-        id: changed-files-api
+        id: changed-files-lib
         uses: tj-actions/changed-files@v19
         with:
           files: |
