@@ -1,1 +1,1 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal

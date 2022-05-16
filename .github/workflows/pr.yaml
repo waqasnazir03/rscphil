@@ -54,3 +54,8 @@ jobs:
           for file in ${{ steps.changed-files-lib.outputs.all_modified_files }}; do
             echo "$file was modified"
           done
+      # Display arcus images
+      - name: Display arcus image(s)
+        run: docker images | grep arcus
+
+      - run: echo "Done!"
