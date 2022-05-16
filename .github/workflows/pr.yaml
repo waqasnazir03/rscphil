@@ -59,6 +59,6 @@ jobs:
 
       # Display arcus images
       - name: Display arcus image(s)
-        run: docker images | grep arcus
+        run: docker image ls | grep arcus
 
       - run: echo "Done!"
