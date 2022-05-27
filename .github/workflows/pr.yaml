@@ -27,7 +27,7 @@ jobs:
       # Setup tag variable
       - name: Set current branch as tag
         id: tag
-        run: echo "::set-output name=branchname::${{ steps.branch-names.outputs.head_ref_branch }}"
+        run: echo "::set-output name=branchname::${{ steps.branch-name.outputs.head_ref_branch }}"
       
       - name: Get actions specific changed files
         id: changed-files-actions
