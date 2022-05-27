@@ -20,12 +20,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Get branch names
+        id: branch-name
+        uses: tj-actions/branch-names@v5.2
+
+      # Setup tag variable
+      - name: Set current branch as tag
+        id: tag
+        run: echo "::set-output name=branchname::${{ steps.branch-name.outputs.head_ref_branch }}"
+      
       - name: Get actions specific changed files
         id: changed-files-actions
         uses: tj-actions/changed-files@v19
         with:
           files: |
             '.github/workflows/**'
+            
+      - name: echo branch
+        env:
+          BRANCH: ${{ steps.tag.outputs.branchname }}
+        run: |
+          echo $BRANCH
 
       - name: Get api specific changed files
         id: changed-files-api
