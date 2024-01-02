@@ -22,21 +22,21 @@ jobs:
 
       - name: Get actions specific changed files
         id: changed-files-actions
-        uses: tj-actions/changed-files@v19
+        uses: tj-actions/changed-files@v41
         with:
           files: |
             '.github/workflows/**'
 
       - name: Get api specific changed files
         id: changed-files-api
-        uses: tj-actions/changed-files@v19
+        uses: tj-actions/changed-files@v41
         with:
           files: |
             'test/api/**'
 
       - name: Get lib specific changed files
         id: changed-files-lib
-        uses: tj-actions/changed-files@v19
+        uses: tj-actions/changed-files@v41
         with:
           files: |
             'test/lib/**'
